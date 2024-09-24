@@ -19,7 +19,7 @@
         android:gravity="center"
         android:layout_alignParentTop="true"/>
     
-    <com.inuker.bluetooth.view.PullToRefreshFrameLayout
+    <com.dreaming.bluetooth.view.PullToRefreshFrameLayout
         android:id="@+id/pulllayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

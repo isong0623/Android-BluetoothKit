@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.inuker.bluetooth">
+    package="com.dreaming.bluetooth">
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
@@ -14,10 +14,10 @@
     <application
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:name=".MyApplication"
+        android:name="com.dreaming.bluetooth.MyApplication"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="com.dreaming.bluetooth.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -30,11 +30,11 @@
         <!--<activity-->
             <!--android:name=".WaveActivity" />-->
 
-        <activity android:name=".DeviceDetailActivity" />
+        <activity android:name="com.dreaming.bluetooth.DeviceDetailActivity" />
 
-        <activity android:name=".CharacterActivity" />
+        <activity android:name="com.dreaming.bluetooth.CharacterActivity" />
 
-        <activity android:name=".TestActivity1" />
+        <activity android:name="com.dreaming.bluetooth.TestActivity1" />
 
     </application>
 
