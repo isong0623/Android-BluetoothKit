@@ -141,14 +141,14 @@ Android 12 引入了 BLUETOOTH_SCAN、BLUETOOTH_ADVERTISE 和 BLUETOOTH_CONNECT 
 更新应用的蓝牙权限声明
 为了让您的设备做好准备以 Android 12 或更高版本为目标平台，请更新应用的逻辑。请声明一组更现代的蓝牙权限，而不是声明一组旧版蓝牙权限。
 
-#Android 13 (API 33)
+# Android 13 (API 33)
 蓝牙 LE 音频
 低功耗 (LE) 音频是一种无线音频，旨在取代传统蓝牙并支持特定的应用场景和连接拓扑。
 通过该技术，用户能够与朋友和家人分享音频内容以及播放音频给他们听，也可以订阅信息、娱乐或无障碍用途的公共广播内容。 
 这项新技术可以确保用户接收到高保真度的音频，而不必牺牲电池续航时间，并且还可以在不同使用情形之间无缝切换，这是传统蓝牙技术无法实现的。
 从 Android 13 开始， 系统包括对 LE 音频的内置支持，因此开发者会收到 在兼容的设备上免费下载这些功能。
 
-#Android 14 (API 34)
+# Android 14 (API 34)
 对于第一个请求 MTU 的 GATT 客户端，MTU 设置为 517
 Android 蓝牙堆栈更严格地遵循蓝牙核心规范的第 5.2 版，{@link https://www.bluetooth.com/wp-content/uploads/2020/01/Bluetooth_5.2_Feature_Overview.pdf}
 当第一个 GATT 客户端使用 BluetoothGatt#requestMtu(int) API 请求 MTU 时，
