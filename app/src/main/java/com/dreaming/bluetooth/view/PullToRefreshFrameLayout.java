@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.dreaming.bluetooth.AppConstants;
 import com.dreaming.bluetooth.R;
 
 public class PullToRefreshFrameLayout extends FrameLayout {
@@ -111,31 +110,31 @@ public class PullToRefreshFrameLayout extends FrameLayout {
 
 	public void showState(int nState) {
 		switch (nState) {
-		case AppConstants.LIST:
+		case ListConstants.LIST:
 			pullToRefreshListView.setVisibility(View.VISIBLE);
 			loadLayout.setVisibility(View.GONE);
 			emptyLayout.setVisibility(View.GONE);
 			errorLayout.setVisibility(View.GONE);
 			break;
-		case AppConstants.LOADING:
+		case ListConstants.LOADING:
 			loadLayout.setVisibility(View.VISIBLE);
 			pullToRefreshListView.setVisibility(View.GONE);
 			emptyLayout.setVisibility(View.GONE);
 			errorLayout.setVisibility(View.GONE);
 			break;
-		case AppConstants.EMPTY:
+		case ListConstants.EMPTY:
 			emptyLayout.setVisibility(View.VISIBLE);
 			loadLayout.setVisibility(View.GONE);
 			pullToRefreshListView.setVisibility(View.GONE);
 			errorLayout.setVisibility(View.GONE);
 			break;
-		case AppConstants.ERROR:
+		case ListConstants.ERROR:
 			errorLayout.setVisibility(View.VISIBLE);
 			emptyLayout.setVisibility(View.GONE);
 			loadLayout.setVisibility(View.GONE);
 			pullToRefreshListView.setVisibility(View.GONE);
 			break;
-		case AppConstants.ALLOW_PULL_IN_EMPTY_PAGE: // 没有内容，但是允许下拉刷新
+		case ListConstants.ALLOW_PULL_IN_EMPTY_PAGE: // 没有内容，但是允许下拉刷新
 			pullToRefreshListView.setVisibility(View.VISIBLE);
 			loadLayout.setVisibility(View.GONE);
 			emptyLayout.setVisibility(View.VISIBLE);
@@ -150,7 +149,7 @@ public class PullToRefreshFrameLayout extends FrameLayout {
 	public void showState(int nState, int emptyImageId, int enptyTextId) {
 		showState(nState);
 
-		if (nState == AppConstants.ALLOW_PULL_IN_EMPTY_PAGE) {
+		if (nState == ListConstants.ALLOW_PULL_IN_EMPTY_PAGE) {
 			if (mEmptyImageView != null) {
 				if (emptyImageId > 0) {
 					mEmptyImageView.setImageResource(emptyImageId);

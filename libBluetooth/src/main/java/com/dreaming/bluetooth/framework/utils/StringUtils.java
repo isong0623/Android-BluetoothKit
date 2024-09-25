@@ -1,5 +1,7 @@
 package com.dreaming.bluetooth.framework.utils;
 
+import java.util.List;
+
 public class StringUtils {
     public static boolean isNotBlank(final CharSequence cs) {
         return !isBlank(cs);
@@ -16,5 +18,27 @@ public class StringUtils {
             }
         }
         return true;
+    }
+
+    public static <T> String toListString(List<T> s){
+        if(s == null) return "";
+        StringBuilder sb = new StringBuilder();
+        for(T i :s){
+            if(sb.length()>0) sb.append(",");
+            sb.append(i);
+        }
+        return sb.toString();
+    }
+
+    public static <T> String toArrayString(T[] s){
+        if(s == null) return "";
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for(T i :s){
+            if(sb.length()>0) sb.append(",");
+            sb.append(i);
+        }
+        sb.append("]");
+        return sb.toString();
     }
 }

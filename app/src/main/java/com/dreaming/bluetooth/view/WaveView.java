@@ -14,10 +14,6 @@ import android.view.View;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * Created by liwentian on 2017/1/19.
- */
-
 public class WaveView extends View {
 
     private int mWidth, mHeight;

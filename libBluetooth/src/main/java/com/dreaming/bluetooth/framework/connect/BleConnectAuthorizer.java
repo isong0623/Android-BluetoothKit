@@ -8,6 +8,8 @@ import com.dreaming.bluetooth.framework.connect.options.BleConnectOptions;
 import com.dreaming.bluetooth.framework.connect.response.BleGeneralResponse;
 import com.dreaming.bluetooth.framework.connect.response.BluetoothApiResponseCode;
 import com.dreaming.bluetooth.framework.utils.BluetoothLogger;
+import com.dreaming.bluetooth.framework.utils.StringUtils;
+import com.dreaming.bluetooth.framework.utils.Version;
 import com.dreaming.bluetooth.framework.utils.proxy.ProxyInterceptor;
 import com.dreaming.bluetooth.framework.utils.proxy.ProxyUtils;
 
@@ -16,6 +18,7 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 public class BleConnectAuthorizer implements IBleConnectAuthorizer, ProxyInterceptor {
@@ -48,7 +51,7 @@ public class BleConnectAuthorizer implements IBleConnectAuthorizer, ProxyInterce
     }
 
     private static IBleConnectAuthorizer mInstance = null;
-    public static IBleConnectAuthorizer getInstance(){
+    static IBleConnectAuthorizer getInstance(){
         if(mInstance == null){
             synchronized (BleConnectAuthorizer.class){
                 if(mInstance == null){
@@ -148,12 +151,60 @@ public class BleConnectAuthorizer implements IBleConnectAuthorizer, ProxyInterce
         permissionRequestor.onRequestPermissions(onGranted, onDenied, permissions);
     }
 
+    private static Map<String, Map<Version.API, String[]>> mPermissions = new HashMap<>();
+    static {
+        //TODO 查询各个api需要的权限
+        Map<Version.API, String[]> mConnection;
+
+        //5.0 广告和扫描功能
+        //BLUETOOTH_ADMIN
+
+        //6.0 扫描获取附近外部设备的硬件标识符
+        //ACCESS_COARSE_LOCATION
+
+        //12.0 引入了一些新权限，可使应用扫描附近的蓝牙设备，而无需请求位置信息权限。
+        //Android 12 引入了 BLUETOOTH_SCAN、BLUETOOTH_ADVERTISE 和 BLUETOOTH_CONNECT 权限。
+
+    }
+
+    private static String[] getPermissions(String apiName){
+        Map<Version.API,String[]> map = mPermissions.get(apiName);
+        if(map == null) return null;
+        Version.API api = Version.API.api();
+
+        for(Map.Entry<Version.API, String[]> entry : map.entrySet()){
+            if(api.level>=entry.getKey().level){
+                return entry.getValue();
+            }
+        }
+        return null;
+    }
+
+    private static boolean bIsEnableOptimizeBackground = false;
+    public static void setEnableOptimizeBackground(boolean enable){
+        bIsEnableOptimizeBackground = enable;
+    }
+
+    private static boolean bIsEnableOptimizeBattery = false;
+    public static void setEnableOptimizeBattery(boolean enable){
+        bIsEnableOptimizeBattery = enable;
+    }
 
     @Override
     public boolean onIntercept(final Object object, final Method method, final Object[] args) {
         if(object == null) return false;
         if("onIntercept".equals(method.getName())) return false;
-        logger.v("onIntercept: thread=%s method:%s",Thread.currentThread().getName(), method.getName());
+        String[] permissions = getPermissions(method.getName());
+
+        logger.v("onIntercept: thread=%s, method=%s, permissions=%s", Thread.currentThread().getName(), method.getName(), StringUtils.toArrayString(permissions));
+        if(permissions == null || permissions.length == 0){
+            try {
+                method.invoke(object, args);
+            }catch (Exception e) {
+                e.printStackTrace();
+            }
+            return true;
+        }
         call(method.getName(), new Action<List<String>>() {
                     @Override
                     public void onAction(List<String> data) {
@@ -177,7 +228,7 @@ public class BleConnectAuthorizer implements IBleConnectAuthorizer, ProxyInterce
                         }
                     }
                 },
-                Manifest.permission.BLUETOOTH //TODO 查询各个api需要的权限
+                permissions
         );
 
         return true;

@@ -8,10 +8,10 @@
 本项目基于 https://github.com/dingjikerbo/Android-BluetoothKit 二次开发
 
 ## dev
-1、在原项目基础上变更包名
-2、此项目名以后为Bluetooth-Framework
-3、将Constants中易滥用的部分装换为相应的枚举类
-4、删除BluetoothLog
-5、新增BluetoothLogger，支持日志，支持屏蔽某些类及类内tag的日志，支持全局日志等级屏蔽，类内等级屏蔽
-6、重构Chanel，需实现TCP级别的Chanel
-7、新增权限管理器BleConnectAuthorizer，支持自定义权限请求，开发者无需关心Bluetooth运行过程中需要使用的权限
+* 1、在原项目基础上变更包名
+* 2、此项目名以后为Bluetooth-Framework
+* 3、将Constants中易滥用的部分装换为相应的枚举类
+* 4、删除BluetoothLog
+* 5、新增BluetoothLogger，支持日志，支持屏蔽某些类及类内tag的日志，支持全局日志等级屏蔽，类内等级屏蔽
+* 6、重构Chanel，需实现TCP级别的Chanel
+* 7、新增权限管理器BleConnectAuthorizer，支持自定义权限请求，开发者无需关心Bluetooth运行过程中需要使用的权限

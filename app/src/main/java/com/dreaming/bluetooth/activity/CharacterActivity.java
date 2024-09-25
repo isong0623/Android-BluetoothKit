@@ -1,4 +1,4 @@
-package com.dreaming.bluetooth;
+package com.dreaming.bluetooth.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.dreaming.bluetooth.utils.CommonUtils;
+import com.dreaming.bluetooth.R;
 import com.dreaming.bluetooth.framework.BluetoothClient;
 import com.dreaming.bluetooth.framework.connect.BleConnectStatus;
 import com.dreaming.bluetooth.framework.connect.listener.BleConnectStatusListener;

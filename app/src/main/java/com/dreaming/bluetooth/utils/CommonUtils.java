@@ -1,6 +1,8 @@
-package com.dreaming.bluetooth;
+package com.dreaming.bluetooth.utils;
 
 import android.widget.Toast;
+
+import com.dreaming.bluetooth.MyApplication;
 
 public class CommonUtils {
 

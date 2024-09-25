@@ -1,4 +1,4 @@
-package com.dreaming.bluetooth;
+package com.dreaming.bluetooth.entity;
 
 import java.util.UUID;
 

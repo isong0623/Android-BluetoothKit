@@ -1,4 +1,4 @@
-package com.dreaming.bluetooth;
+package com.dreaming.bluetooth.utils;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -9,9 +9,6 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.Random;
 
-/**
- * Created by dingjikerbo on 2016/9/1.
- */
 public class StringUtils {
 
     private static Random rnd = new Random();

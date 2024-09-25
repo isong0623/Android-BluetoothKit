@@ -1,4 +1,4 @@
-package com.dreaming.bluetooth;
+package com.dreaming.bluetooth.adapter;
 
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.dreaming.bluetooth.entity.DetailItem;
+import com.dreaming.bluetooth.R;
 import com.dreaming.bluetooth.framework.model.BleGattCharacter;
 import com.dreaming.bluetooth.framework.model.BleGattProfile;
 import com.dreaming.bluetooth.framework.model.BleGattService;

@@ -1,8 +1,10 @@
-package com.dreaming.bluetooth;
+package com.dreaming.bluetooth.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+
+import com.dreaming.bluetooth.R;
 
 public class TestActivity1 extends Activity {
 

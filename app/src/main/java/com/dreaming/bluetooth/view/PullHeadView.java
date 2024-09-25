@@ -15,7 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.dreaming.bluetooth.R;
-import com.dreaming.bluetooth.StringUtils;
+import com.dreaming.bluetooth.utils.StringUtils;
 
 public class PullHeadView extends ViewGroup{
 	private final static int UPDATING_IDLE = 0;

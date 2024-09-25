@@ -1,6 +1,6 @@
-package com.dreaming.bluetooth;
+package com.dreaming.bluetooth.view;
 
-public class AppConstants {
+public class ListConstants {
 	/** 下拉刷新列表的各个状态 */
     public static final int LIST = 0;
     public static final int EMPTY = 1;

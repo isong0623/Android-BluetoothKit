@@ -1,4 +1,4 @@
-package com.dreaming.bluetooth;
+package com.dreaming.bluetooth.activity;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothDevice;
@@ -11,6 +11,9 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.dreaming.bluetooth.entity.DetailItem;
+import com.dreaming.bluetooth.adapter.DeviceDetailAdapter;
+import com.dreaming.bluetooth.R;
 import com.dreaming.bluetooth.framework.BluetoothClient;
 import com.dreaming.bluetooth.framework.connect.BleConnectStatus;
 import com.dreaming.bluetooth.framework.connect.listener.BleConnectStatusListener;

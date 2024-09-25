@@ -1,4 +1,4 @@
-package com.dreaming.bluetooth;
+package com.dreaming.bluetooth.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -8,6 +8,9 @@ import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
+import com.dreaming.bluetooth.view.ListConstants;
+import com.dreaming.bluetooth.adapter.DeviceListAdapter;
+import com.dreaming.bluetooth.R;
 import com.dreaming.bluetooth.framework.BluetoothClient;
 import com.dreaming.bluetooth.framework.connect.listener.BluetoothStateListener;
 import com.dreaming.bluetooth.framework.search.SearchRequest;
@@ -81,7 +84,7 @@ public class MainActivity extends Activity {
         public void onSearchStarted() {
             Log.w("MainActivity", "MainActivity.onSearchStarted");
             mListView.onRefreshComplete(true);
-            mRefreshLayout.showState(AppConstants.LIST);
+            mRefreshLayout.showState(ListConstants.LIST);
             mTvTitle.setText(R.string.string_refreshing);
             mDevices.clear();
         }
@@ -107,7 +110,7 @@ public class MainActivity extends Activity {
             }
 
             if (mDevices.size() > 0) {
-                mRefreshLayout.showState(AppConstants.LIST);
+                mRefreshLayout.showState(ListConstants.LIST);
             }
         }
 
@@ -115,7 +118,7 @@ public class MainActivity extends Activity {
         public void onSearchStopped() {
             Log.w("MainActivity", "MainActivity.onSearchStopped");
             mListView.onRefreshComplete(true);
-            mRefreshLayout.showState(AppConstants.LIST);
+            mRefreshLayout.showState(ListConstants.LIST);
 
             mTvTitle.setText(R.string.devices);
         }
@@ -125,7 +128,7 @@ public class MainActivity extends Activity {
             Log.w("MainActivity", "MainActivity.onSearchCanceled");
 
             mListView.onRefreshComplete(true);
-            mRefreshLayout.showState(AppConstants.LIST);
+            mRefreshLayout.showState(ListConstants.LIST);
 
             mTvTitle.setText(R.string.devices);
         }

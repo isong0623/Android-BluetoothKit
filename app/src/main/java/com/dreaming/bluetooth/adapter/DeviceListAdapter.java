@@ -1,4 +1,4 @@
-package com.dreaming.bluetooth;
+package com.dreaming.bluetooth.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.dreaming.bluetooth.R;
+import com.dreaming.bluetooth.activity.DeviceDetailActivity;
 import com.dreaming.bluetooth.framework.beacon.Beacon;
 import com.dreaming.bluetooth.framework.search.SearchResult;
 
