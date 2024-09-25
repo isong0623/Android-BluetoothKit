@@ -36,7 +36,7 @@ public class Version {
         Android_8_1       (27, "Oreo"            ),
         Android_9_0       (28, "Pie"             ),
         Android_10_0      (29, "Q"               ),
-        Android_10_0_Plus (29, "R"               ),
+        Android_10_0_Plus (30, "R"               ),
         Android_11_0      (31, "31"              ),
         Android_12_0      (32, "32"              ),
         Android_13_0      (33, "33"              ),
