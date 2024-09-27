@@ -1,6 +1,5 @@
 package com.dreaming.bluetooth.framework.connect;
 
-import android.Manifest;
 import android.os.HandlerThread;
 import android.os.Looper;
 
@@ -19,6 +18,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.UUID;
 
 public class BleConnectAuthorizer implements IBleConnectAuthorizer, ProxyInterceptor {
@@ -153,9 +153,6 @@ public class BleConnectAuthorizer implements IBleConnectAuthorizer, ProxyInterce
 
     private static Map<String, Map<Version.API, String[]>> mPermissions = new HashMap<>();
     static {
-        //TODO 查询各个api需要的权限
-        Map<Version.API, String[]> mConnection;
-
         //5.0 广告和扫描功能
         //BLUETOOTH_ADMIN
 
@@ -165,6 +162,21 @@ public class BleConnectAuthorizer implements IBleConnectAuthorizer, ProxyInterce
         //12.0 引入了一些新权限，可使应用扫描附近的蓝牙设备，而无需请求位置信息权限。
         //Android 12 引入了 BLUETOOTH_SCAN、BLUETOOTH_ADVERTISE 和 BLUETOOTH_CONNECT 权限。
 
+        Map<Version.API, String[]> mConnection = new TreeMap<>();
+        mConnection.put(Version.API.Android_12_0, new String[]{"android.permission.BLUETOOTH_CONNECT"});
+        mConnection.put(Version.API.Android_5_0, new String[]{"android.permission.BLUETOOTH_ADMIN"});
+
+        Map<Version.API, String[]> mNotify = new TreeMap<>();
+        mNotify.put(Version.API.Android_5_0, new String[]{"android.permission.BLUETOOTH_ADMIN"});
+        mNotify.put(Version.API.Android_12_0, new String[]{"android.permission.BLUETOOTH_ADVERTISE"});
+
+        Map<Version.API, String[]> mIndicate = new TreeMap<>();
+        mIndicate.put(Version.API.Android_5_0, new String[]{"android.permission.BLUETOOTH_ADMIN"});
+        mIndicate.put(Version.API.Android_12_0, new String[]{"android.permission.BLUETOOTH_ADVERTISE"});
+
+        mPermissions.put("connect", mConnection);
+        mPermissions.put("notify", mNotify);
+        mPermissions.put("indicate", mIndicate);
     }
 
     private static String[] getPermissions(String apiName){
